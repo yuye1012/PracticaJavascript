@@ -1,0 +1,71 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>PRACTICA 3.D - JavaScript</title>
+
+    <script type="text/javascript">
+        window.onload = function () {
+
+            let texto_oculto = document.getElementById("texto_oculto");
+            texto_oculto.className = "oculto";
+
+            let enlace = document.getElementById("enlace");
+            enlace.addEventListener("click", function () {
+                enlace.className = "oculto";
+                texto_oculto.className = "visible";
+            })
+
+        }
+
+        <![CDATA[       // secciones que ignorará el significado especial de los caractéres < y & para los ficheros xhtml
+            function anade() {
+                let lista = document.getElementById("lista");
+                let nuevo = document.getElementById("untexto").value;
+                lista.insertAdjacentHTML("beforeend", "<li>"+nuevo+"</li>"); //"&lt;li>"+nuevo+"&lt;/li>"
+                console.log(lista.childElementCount)
+
+                let intro = document.getElementById("introduccion");
+                intro.style.color == "blue" ? intro.style.color = "green" : intro.style.color = "blue";
+            }
+        ]]>
+
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="practica3.css" />
+
+    <style type="text/css">
+        .oculto {
+            display: none;
+        }
+
+        .visible {
+            display: inline;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <p>Bloque 1 : Validaciones con JavaScript </p>
+    <p>
+        textos principales
+        <a href="#" id="enlace">...enlace para seguir leyendo...</a>
+        <span id="texto_oculto">...texto oculto inicialmente y que se muestra al hacer click en enlace...</span>
+        Más textos
+    </p>
+
+    <p id="introduccion" style="color: blue">
+        Usando DOM
+    </p>
+    <ul id="lista">
+        <li>Desarrollo de Aplicaciones Web</li>
+        <li>Una de las mejores asignaturas del Grado</li>
+    </ul>
+    <input type="text" id="untexto" />
+    <input type="button" value="Añadir elemento" onclick="anade()" />
+</body>
+
+</html>

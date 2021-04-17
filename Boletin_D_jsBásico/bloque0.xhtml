@@ -1,0 +1,91 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>PRACTICA 3.D - JavaScript</title>
+
+    <script type="text/javascript">
+        var mensaje = "Este es mi 'mensaje'. \nYu Ye"
+
+        // window.onload se ejecutará una vez que se ha completado de renderizar todos los elementos HTML de la página
+        // se debe primero cargar los elementos de la página y luego manipularlos, si no, daría error.
+        window.onload = function() {
+            var btn_saludar = document.getElementById("saludar");
+            btn_saludar.addEventListener("click", function () {
+                let nombre = document.getElementById("nombre").value;
+                alert("Hola " + nombre);
+            })
+
+            var array = ["Desarrollo", 35, false, "de Aplicaciones Web", 10, "10"];
+
+            var btn_recorrer = document.getElementById("recorrer");
+            btn_recorrer.addEventListener("click", function () {
+                let area = document.getElementById("resultado_recorrer");
+
+                let solo_string = document.getElementById("solo_string").checked;
+                for (let ele of array) {
+                    if (!solo_string || typeof ele == "string")
+                        area.value += ele.toString() + "\n";
+                }
+            })
+
+            var btn_push = document.getElementById("push");
+            btn_push.addEventListener("click", function () {
+                array.push( document.getElementById("nombre").value);
+            })
+
+            var btn_pop = document.getElementById("pop");
+            btn_pop.addEventListener("click", function () {
+                array.pop();
+            })
+
+
+            var btn_resetear = document.getElementById("resetear");
+            btn_resetear.addEventListener("click", function () {
+                document.getElementById("resultado_recorrer").value = "";
+            })
+
+            //alert(mensaje);
+        }
+    </script>
+</head>
+
+<body>
+    <p>Bloque 0 : JavaScript Básico</p>
+
+    <input id="nombre" />
+    <button id="saludar">
+        Hola
+    </button>
+
+    <br />
+    <button id="recorrer">
+        Mostrar
+    </button>
+    <button id="resetear">
+        resetear
+    </button>
+
+    <br />
+    <textarea  rows="4" cols="50" id="resultado_recorrer" /> 
+
+    <br />
+    <input type="checkbox" id="solo_string" /> Solo String 
+
+    <br />
+    <button id="push">
+        push
+    </button>
+    <button id="pop">
+        pop
+    </button>
+
+    <noscript>
+        Esta página <strong>requiere</strong> el uso de JavaScript y parece que
+        está desactivado.
+    </noscript>
+</body>
+
+</html>
